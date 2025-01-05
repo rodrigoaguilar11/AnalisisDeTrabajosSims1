@@ -1,0 +1,7 @@
+.main_backgound{
+    background-image: url(../img/wallapaper.png);
+    background-size: cover;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
