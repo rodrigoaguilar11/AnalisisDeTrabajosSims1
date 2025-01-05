@@ -1,10 +1,12 @@
 const clasifyLevels = levelClasify(worklist);
-const salarySort = sortSalary(clasifyLevels);
 
 document.addEventListener("DOMContentLoaded", function (e) {
   //Nav menu anchor listeners
   document.getElementById("salary").addEventListener("click", () => {
-    sortTable("salary");
+    sortTable(sortArgument(clasifyLevels,"salary"),"Salario")
+  });
+  document.getElementById("friends").addEventListener("click", () => {
+    sortTable(sortArgument(clasifyLevels,"friends"),"Amigos")
   });
   document.getElementById("business").addEventListener("click", () => {
     workTable("Business");
@@ -12,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementById("entertainment").addEventListener("click", () => {
     workTable("Entertainment");
   });
-
   document.getElementById("law_enforcement").addEventListener("click", () => {
     workTable("LawEnforcement");
   });
@@ -52,7 +53,7 @@ function workTable(work) {
     <td>${carHour(level.begintime)}</td>
     <td>${level.begintime}</td>
     <td>${level.endtime}</td>
-    <td>${workHours(level.begintime, level.endtime)}</td>
+    <td>${workHours(level)}</td>
   </tr>`;
     count += 1;
   }
@@ -87,23 +88,8 @@ function workTable(work) {
   <td>${level.skills[3] / 100}</td>
   <td>${level.skills[4] / 100}</td>
   <td>${level.skills[5] / 100}</td>
-  <td>${
-    level.skills[0] / 100 +
-    level.skills[1] / 100 +
-    level.skills[2] / 100 +
-    level.skills[3] / 100 +
-    level.skills[4] / 100 +
-    level.skills[5] / 100
-  }</td>    
-  <td>${
-    level.friends +
-    level.skills[0] / 100 +
-    level.skills[1] / 100 +
-    level.skills[2] / 100 +
-    level.skills[3] / 100 +
-    level.skills[4] / 100 +
-    level.skills[5] / 100
-  }</td> 
+  <td>${totalSkills(level)}</td>    
+  <td>${level.friends + totalSkills(level)}</td> 
 </tr>`;
     count += 1;
   }
@@ -140,13 +126,7 @@ function workTable(work) {
   <td>${level.moodChangesPerHour[5]}</td>
   <td>${level.moodChangesPerHour[6]}</td>
   <td>${
-    level.moodChangesPerHour[0] +
-    level.moodChangesPerHour[1] +
-    level.moodChangesPerHour[2] +
-    level.moodChangesPerHour[3] +
-    level.moodChangesPerHour[4] +
-    level.moodChangesPerHour[5] +
-    level.moodChangesPerHour[6]
+    totalMoodChanges(level)
   }</td>
 </tr>`;
     count += 1;
@@ -175,15 +155,8 @@ function workTable(work) {
   count = 1;
   for (const element in workLevels) {
     const level = workLevels[element];
-    let hoursDay = workHours(level.begintime, level.endtime);
-    let totalMoodChanges =
-      level.moodChangesPerHour[0] +
-      level.moodChangesPerHour[1] +
-      level.moodChangesPerHour[2] +
-      level.moodChangesPerHour[3] +
-      level.moodChangesPerHour[4] +
-      level.moodChangesPerHour[5] +
-      level.moodChangesPerHour[6];
+    let hoursDay = workHours(level);
+    let totalMood = totalMoodChanges(level);
     result += `
 <tr>
 <th scope="row">${count}</th>
@@ -194,9 +167,9 @@ function workTable(work) {
 <td>${level.moodChangesPerHour[4] * hoursDay}</td>
 <td>${level.moodChangesPerHour[5] * hoursDay}</td>
 <td>${level.moodChangesPerHour[6] * hoursDay}</td>
-<td>${totalMoodChanges * hoursDay}</td>
+<td>${totalMood * hoursDay}</td>
 <td>${hoursDay}</td>
-<td>${totalMoodChanges * hoursDay * hoursDay}</td>
+<td>${totalMood * hoursDay * hoursDay}</td>
 </tr>
 `;
     count += 1;
@@ -231,18 +204,19 @@ function workTable(work) {
   document.getElementById("list").innerHTML = result;
 }
 
-function sortTable(value) {
-  let result
-  document.getElementById("title").innerHTML = "Salario por niveles";
+function sortTable(array, argument) {
+  let result;
+  document.getElementById("title").innerHTML = argument + " por Niveles";
   let countLevel = 1;
   let countWork = 1;
   let actualLevel;
   let actualCareer;
-  let totalMoodChanges
-  let hoursDay 
+  let totalMood;
+  let hoursDay;
 
-  salarySort.forEach((element) => (
-    result += `</tbody></table>
+  array.forEach(
+    (element) => (
+      (result += `</tbody></table>
 <div class="list-group-item list-group-item-light container text-center col-lg-5 col-md-10 col-sm-12">
     <h1 id="card">Nivel ${countLevel}</h1>
 </div>
@@ -256,47 +230,34 @@ function sortTable(value) {
     <th scope="col">Horas</th>
     <th scope="col">Amigos</th>
     <th scope="col">Habilidades</th>
-  <th scope="col">Cansancio por dia</th>    
-
+    <th scope="col">Cansancio por dia</th>    
   </tr>
-</thead>`,
-      actualLevel = element.careers,
-      actualLevel.forEach((work) => (actualCareer = work.levelData,
-        console.log(actualCareer),
-        totalMoodChanges =
-        actualCareer.moodChangesPerHour[0] +
-        actualCareer.moodChangesPerHour[1] +
-        actualCareer.moodChangesPerHour[2] +
-        actualCareer.moodChangesPerHour[3] +
-        actualCareer.moodChangesPerHour[4] +
-        actualCareer.moodChangesPerHour[5] +
-        actualCareer.moodChangesPerHour[6],
-        hoursDay = workHours(actualCareer.begintime, actualCareer.endtime),
-        result += `
+</thead>`),
+      (actualLevel = element.careers),
+      actualLevel.forEach(
+        (work) => (
+          (actualCareer = work.levelData),
+          (totalMood = totalMoodChanges(actualCareer)),
+          (hoursDay = workHours(actualCareer)),
+          (result += `
       <tr>
         <th scope="row">${countWork}</th>
         <td>${work.carrerNameEs}</td>
         <td>${actualCareer.nameEs}</td>
         <td>$${actualCareer.salary}</td>
-        <td>${workHours(actualCareer.begintime, actualCareer.endtime)}</td>
+        <td>${workHours(actualCareer)}</td>
         <td>${actualCareer.friends}</td>
-<td>${
-  actualCareer.skills[0] / 100 +
-  actualCareer.skills[1] / 100 +
-  actualCareer.skills[2] / 100 +
-  actualCareer.skills[3] / 100 +
-  actualCareer.skills[4] / 100 +
-  actualCareer.skills[5] / 100
-  }</td>
-        <td>${totalMoodChanges * hoursDay}</td>
+      <td>${totalSkills(actualCareer)}</td>
+        <td>${totalMood * hoursDay}</td>
 
-      </tr>`,
-        countWork += 1
-      ),
-      countWork =1,
-      countLevel += 1
+      </tr>`),
+          (countWork += 1)
+        ),
+        (countWork = 1),
+        (countLevel += 1)
+      )
     )
-  ));
+  );
 
   result += `</tbody></table>`;
   document.getElementById("list").innerHTML = result;

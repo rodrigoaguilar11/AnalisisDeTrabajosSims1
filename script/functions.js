@@ -1,4 +1,6 @@
-function workHours(begin, end) {
+function workHours(array) {
+  let begin = array.begintime
+  let end = array.endtime
   if (end > begin) {
     return end - begin;
   } else {
@@ -14,6 +16,24 @@ function carHour(begin) {
   }
 }
 
+function totalMoodChanges(array){
+return array.moodChangesPerHour[0] +
+array.moodChangesPerHour[1] +
+array.moodChangesPerHour[2] +
+array.moodChangesPerHour[3] +
+array.moodChangesPerHour[4] +
+array.moodChangesPerHour[5] +
+array.moodChangesPerHour[6]
+}
+
+function totalSkills(array){
+  return array.skills[0] / 100 +
+  array.skills[1] / 100 +
+  array.skills[2] / 100 +
+  array.skills[3] / 100 +
+  array.skills[4] / 100 +
+  array.skills[5] / 100
+}
 function salaryFilter(objects, props, sort) {
   return [...objects].sort((a, b) =>
     props.reduce((iterator, p, i) => {
@@ -52,13 +72,13 @@ function levelClasify(list) {
   return classified;
 }
 
-function sortSalary(data) {
+function sortArgument(data, argument) {
   return data.map(nivel => {
     return {
       ...nivel,
       careers: [...nivel.careers].sort((a, b) => {
-        const salaryA = a.levelData.salary;
-        const salaryB = b.levelData.salary;
+        const salaryA = a.levelData[argument];
+        const salaryB = b.levelData[argument];
         return salaryB - salaryA; // Orden descendente (mayor a menor)
       })
     };
