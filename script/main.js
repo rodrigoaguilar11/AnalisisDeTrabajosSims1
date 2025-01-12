@@ -49,10 +49,18 @@ function mainPage() {
   document.getElementById("subtitle").innerHTML = `
             <div class="p-4 sims_div container">
                     <div class="center">
-                        <h4>Conceptos:</h4>
-                       <h5>De forma nativa cada carrera en el nivel 10 tiene una carta de oportunidad de cambio de carrera.
-                       Esto significa que cuando el sim vaya a trabajar pueda comenzar otra carrera desde el nivel 1, para evitarlo podemos mantenernos en el nivel 9</h5>
-                    </div>
+                        <h4>Cartas de oportunidad y Cambio de carrera</h4>
+                       <h5>Algunos niveles de algunos trabajos tienen cartas de oportunidad, De forma nativa cada carrera en el nivel 10 tiene una de cambio de carrera.
+                       Esto significa que cuando el sim vaya a trabajar tiene un 12% de que pueda comenzar otra carrera desde un nivel bajo, para evitarlo podemos mantenernos en el nivel 9</h5>
+                       <h4>Ascenso y Bonus</h4>
+                       <h5>La descripcion de los ascensos es la misma que la de trabajo, el bonus de ascenso es el nuevo salario multiplicado por 2</h5>                   
+                       <h4>Bonus de niños</h4>
+                       <h5>Los niños que van a estudiar con una nota de A++ tienen un 5% de recibir $100</h5> 
+                       <h4>Notas de niños</h4>
+                       <h5>Los niños suben la nota si al volver de la escuela tienen 40 puntos de animo y bajan la nota si tienen menos de 0 (El animo se mide desde -100 a 100)</h5>                  
+                       <h4>Puntos de Habilidad</h4>
+                       <h5>Internamente los puntos de habilidad se cuentan de a 100 y no de a 1, esto permite ejemplo: tener 150 puntos de cocina, significa 1 y media barra, a fines practicos las mediremos de a 1 y no 100</h5>
+                       </div>
             </div>
         `;
 }
@@ -95,18 +103,18 @@ function workTable(work) {
   let count = 1;
   for (const element in workLevels) {
     const level = workLevels[element];
-    let bonus =""
-    if (count==1){
-      bonus="0"
-    }else{
-      bonus=level.salary*2
+    let bonus = "";
+    if (count == 1) {
+      bonus = "0";
+    } else {
+      bonus = level.salary * 2;
     }
     content += `
   <tr>
     <th scope="row">${count}</th>
     <td>${level.nameEs}</td>
-    <td>$${level.salary}</td>
-    <td>$${bonus}</td>
+    <td>§${level.salary}</td>
+    <td>§${bonus}</td>
     <td>${carHour(level.begintime)}</td>
     <td>${level.begintime}</td>
     <td>${level.endtime}</td>
@@ -263,13 +271,46 @@ function workTable(work) {
                 tabindex="0">
 <div class="list-group-item container text-center col-lg-6 col-md-10 col-sm-12 p-1 mb-3">
     <h1 id="card" class="p-2">Cartas de oportunidad</h1>
+    <h5>Cuando el sim trabaja hay un 12% de obtener la carta por nivel.</h5>
 </div>
 <table class="table table-success table-striped">
 <thead>
 <tr>
   <th scope="col">Nivel</th>
   <th scope="col">Nombre</th>
+  <th scope="col">Descripcion</th>
   <th scope="col">Efecto</th>
+</tr>
+</thead>
+<tbody>`;
+  count = 1;
+  for (const element in workLevels) {
+    const level = workLevels[element];
+if(level.chanceCardEs!=""){
+    content += `
+<tr>
+<th scope="row">${count}</th>
+<td>${level.nameEs}</td>
+  <td>${level.chanceCardEs}</td>
+<td>${level.chanceCardEffectEs}</td>
+</tr>`;
+}
+    count += 1;
+  }
+  content += `</tbody></table></div>`;
+  //descripcion
+  tab += `<button class="nav-link" id="v-pills-descripcion-tab" data-bs-toggle="pill" data-bs-target="#v-pills-descripcion"
+                type="button" role="tab" aria-controls="v-pills-descripcion" aria-selected="false">Descripcion</button>`;
+  content += `<div class="tab-pane fade sims_div p-3" id="v-pills-descripcion" role="tabpanel" aria-labelledby="v-pills-descripcion-tab"
+                tabindex="0">
+<div class="list-group-item container text-center col-lg-6 col-md-10 col-sm-12 p-1 mb-3">
+    <h1 id="card" class="p-2">Descripcion</h1>
+</div>
+<table class="table table-success table-striped">
+<thead>
+<tr>
+  <th scope="col">Nivel</th>
+  <th scope="col">Nombre</th>
   <th scope="col">Descripcion</th>
 </tr>
 </thead>
@@ -282,7 +323,6 @@ function workTable(work) {
 <th scope="row">${count}</th>
 <td>${level.nameEs}</td>
   <td>${level.descriptionEs}</td>
-<td>${level.promotionEs}</td>
 </tr>`;
     count += 1;
   }
@@ -339,7 +379,7 @@ function sortTable(array, argument) {
         <th scope="row">${countWork}</th>
         <td>${work.carrerNameEs}</td>
         <td>${actualCareer.nameEs}</td>
-        <td>$${actualCareer.salary}</td>
+        <td>§${actualCareer.salary}</td>
         <td>${workHours(actualCareer)}</td>
         <td>${actualCareer.friends}</td>
         <td>${totalSkills(actualCareer)}</td>
@@ -359,7 +399,9 @@ function sortTable(array, argument) {
 }
 
 function about() {
-  document.getElementById("title").innerHTML = `<h1>Informacion del proyecto</h1>`;
+  document.getElementById(
+    "title"
+  ).innerHTML = `<h1>Informacion del proyecto</h1>`;
   document.getElementById("v-pills-tabContent").innerHTML = ``;
   document.getElementById("v-pills-tab").innerHTML = ``;
 
