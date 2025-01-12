@@ -352,6 +352,9 @@ function sortTable(array, argument) {
 
 function about() {
   document.getElementById("title").innerHTML = `<h1>Informacion del proyecto</h1>`;
+  document.getElementById("v-pills-tabContent").innerHTML = ``;
+  document.getElementById("v-pills-tab").innerHTML = ``;
+
   document.getElementById("subtitle").innerHTML = `<div class="container">
   <div class="p-4 sims_div">
       <div class="col d-block d-lg-flex">
@@ -387,7 +390,6 @@ function about() {
       <h5 class="center">El objetivo de esta pagina es ofrecer informacion clasificada sobre las carreras laborales de Los Sims 1.</h5>
           <br>
       <h5>Inicio del proyecto 27/12/2024.</h4>
-          <button class="btn"><a href="../index.html"><span pan>Volver</span></a></button>
   </div>
 </div>`;
 }
