@@ -72,14 +72,19 @@ function levelClasify(list) {
   return classified;
 }
 
-function sortArgument(data, argument) {
+function sortArgument(data, argument, orden) {
   return data.map(nivel => {
     return {
       ...nivel,
       careers: [...nivel.careers].sort((a, b) => {
         const salaryA = a.levelData[argument];
         const salaryB = b.levelData[argument];
-        return salaryB - salaryA; // Orden descendente (mayor a menor)
+        if (orden=="des"){
+          return salaryB - salaryA
+        }else{
+          return  salaryA - salaryB
+        }
+        ; // Orden descendente (mayor a menor)
       })
     };
   });
