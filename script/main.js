@@ -82,6 +82,7 @@ function workTable(work) {
     <th scope="col">Nivel</th>
     <th scope="col">Nombre</th>
     <th scope="col">Salario</th>
+    <th scope="col">Bonificacion</th>
     <th scope="col">Auto</th>
     <th scope="col">Entrada</th>
     <th scope="col">Salida</th>
@@ -94,11 +95,18 @@ function workTable(work) {
   let count = 1;
   for (const element in workLevels) {
     const level = workLevels[element];
+    let bonus =""
+    if (count==1){
+      bonus="0"
+    }else{
+      bonus=level.salary*2
+    }
     content += `
   <tr>
     <th scope="row">${count}</th>
     <td>${level.nameEs}</td>
     <td>$${level.salary}</td>
+    <td>$${bonus}</td>
     <td>${carHour(level.begintime)}</td>
     <td>${level.begintime}</td>
     <td>${level.endtime}</td>
