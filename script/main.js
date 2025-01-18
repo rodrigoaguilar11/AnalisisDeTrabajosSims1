@@ -39,27 +39,40 @@ document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementById("life_of_crime").addEventListener("click", () => {
     workTable("Life of Crime");
   });
+  document.getElementById("medicine").addEventListener("click", () => {
+    workTable("Medicine");
+  });
   mainPage();
 });
 
 function mainPage() {
   document.getElementById(
     "title"
-  ).innerHTML = `Bienvenido a la pagina para clasificar trabajos en Los Sims 1`;
+  ).innerHTML = `<h1>Bienvenido a la pagina para clasificar trabajos en Los Sims 1</h1>`;
   document.getElementById("subtitle").innerHTML = `
-            <div class="p-4 sims_div container">
-                    <div class="center">
-                        <h4>Cartas de oportunidad y Cambio de carrera</h4>
-                       <h5>Algunos niveles de algunos trabajos tienen cartas de oportunidad, De forma nativa cada carrera en el nivel 10 tiene una de cambio de carrera.
+            <div class="p-4 container col d-flex">
+                    <div class="sims_div p-3 m-1">
+                      <h4 class="center">Conceptos de Adultos</h4>
+                      <br>
+                      <h4>Cartas de oportunidad y Cambio de carrera</h4>
+                      <h5>Algunos niveles de algunos trabajos tienen cartas de oportunidad, De forma nativa cada carrera en el nivel 10 tiene una de cambio de carrera.
                        Esto significa que cuando el sim vaya a trabajar tiene un 12% de que pueda comenzar otra carrera desde un nivel bajo, para evitarlo podemos mantenernos en el nivel 9</h5>
+                       <br>
                        <h4>Ascenso y Bonus</h4>
                        <h5>La descripcion de los ascensos es la misma que la de trabajo, el bonus de ascenso es el nuevo salario multiplicado por 2</h5>                   
-                       <h4>Bonus de niños</h4>
-                       <h5>Los niños que van a estudiar con una nota de A++ tienen un 5% de recibir $100</h5> 
-                       <h4>Notas de niños</h4>
-                       <h5>Los niños suben la nota si al volver de la escuela tienen 40 puntos de animo y bajan la nota si tienen menos de 0 (El animo se mide desde -100 a 100)</h5>                  
+                       <br>
                        <h4>Puntos de Habilidad</h4>
                        <h5>Internamente los puntos de habilidad se cuentan de a 100 y no de a 1, esto permite ejemplo: tener 150 puntos de cocina, significa 1 y media barra, a fines practicos las mediremos de a 1 y no 100</h5>
+                       </div>
+
+                       <div class="sims_div p-3 m-1">
+                        <h4 class="center">Conceptos de niños</h4>
+                        <br>             
+                       <h4>Bonus de niños</h4>
+                       <h5>Los niños que van a estudiar con una nota de A++ tienen un 5% de recibir $100</h5>
+                       <br>
+                       <h4>Notas de niños</h4>
+                       <h5>Los niños suben la nota si al volver de la escuela tienen 40 puntos de animo y bajan la nota si tienen menos de 0 (El animo se mide desde -100 a 100)</h5>                  
                        </div>
             </div>
         `;
@@ -71,9 +84,13 @@ function workTable(work) {
   )[0];
 
   document.getElementById("title").innerHTML =
-    actualWork.carrerNameEs + " - " + actualWork.expansion;
+    `<img class="p-2 m-1"src="img/${actualWork.carrerNameUs}.bmp"><h1 class="m-auto">` +
+    actualWork.carrerNameEs +
+    " - " +
+    actualWork.expansion +
+    `</h1><img class="p-2 m-1"src="img/${actualWork.carrerNameUs}.bmp">`;
 
-  let tab = `<div class="sims_div p-3">`;
+  let tab = `<div class="sims_div p-3 row">`;
   let content = "";
   //General
   tab += `<button class="nav-link active" id="v-pills-general-tab" data-bs-toggle="pill" data-bs-target="#v-pills-general"
@@ -236,6 +253,7 @@ function workTable(work) {
   <th scope="col">Total por dia</th>    
   <th scope="col">Horas</th>
   <th scope="col">Puntaje</th>
+  <th scope="col">Salario</th>
 </tr>
 </thead>
 <tbody>`;
@@ -257,6 +275,7 @@ function workTable(work) {
 <td>${totalMood * hoursDay}</td>
 <td>${hoursDay}</td>
 <td>${totalMood * hoursDay * hoursDay}</td>
+<td>§${level.salary}</td>
 </tr>
 `;
     count += 1;
@@ -286,15 +305,15 @@ function workTable(work) {
   count = 1;
   for (const element in workLevels) {
     const level = workLevels[element];
-if(level.chanceCardEs!=""){
-    content += `
+    if (level.chanceCardEs != "") {
+      content += `
 <tr>
 <th scope="row">${count}</th>
 <td>${level.nameEs}</td>
   <td>${level.chanceCardEs}</td>
 <td>${level.chanceCardEffectEs}</td>
 </tr>`;
-}
+    }
     count += 1;
   }
   content += `</tbody></table></div>`;
@@ -333,7 +352,8 @@ if(level.chanceCardEs!=""){
 
 function sortTable(array, argument) {
   document.getElementById("subtitle").innerHTML = ``;
-  document.getElementById("title").innerHTML = argument + " por Niveles";
+  document.getElementById("title").innerHTML =
+    `<h1 class="m-auto">` + argument + " por Niveles</h1>";
   let countLevel = 1;
   let countWork = 1;
   let actualLevel;
@@ -341,7 +361,7 @@ function sortTable(array, argument) {
   let totalMood;
   let hoursDay;
 
-  let tab = `<br><div class="sims_div align-items-center p-3">`;
+  let tab = `<br><div class="sims_div p-3 row">`;
   let content = "";
 
   array.forEach(
@@ -405,10 +425,11 @@ function about() {
   document.getElementById("v-pills-tabContent").innerHTML = ``;
   document.getElementById("v-pills-tab").innerHTML = ``;
 
-  document.getElementById("subtitle").innerHTML = `<div class="container">
+  document.getElementById("subtitle").innerHTML = `<div class="container center">
   <div class="p-4 sims_div">
       <div class="col d-block d-lg-flex">
-          <div class="col-lg-6 p-1">
+          
+           <div class="col-lg-6 p-1">
               <h4>Realizado por Rodrigo Aguilar 2025.</h4>
               <h4 class="white">
                   <a href="https://www.linkedin.com/in/rodrigo-aguilar-91b09a252/"
@@ -421,22 +442,33 @@ function about() {
               <a href="https://github.com/rodrigoaguilar11" target="_blank" style="margin-left:1em ;"><img
                       src="./img/Github.png" alt="github" style="width: 100px;"></a>
           </div>
+
           <div class="col-lg-6 p-1">
               <h4>Complementando la Informacion difundida en mi</h4>
               <h4 class="white">
-                  <a href="" target="_blank">Canal de Youtube</a>.
+                  <a href="https://www.youtube.com/channel/UCPqGCgi3vwvp24XImnEytgw" target="_blank">Canal de Youtube: Lion Eagle Sims 1</a>
               </h4>
               <br>
               <a href="https://www.youtube.com/channel/UCPqGCgi3vwvp24XImnEytgw" target="_blank"><img
                       src="./img/youtube.png" alt="youtube" style="width: 100px;"></a>
           </div>
       </div>
-      <div class="center">
-      <h2>Nuesta comunidad en español:</h2>
-      <a href="https://www.facebook.com/groups/555451053352612" target="_blank"><img
-                      src="./img/grupo.jpg" alt="youtube" style="width: 400px;"></a>
       <br>
+      <div class="d-block d-lg-flex">
+        
+        <div class="col-lg-6 p-1">
+        <h4 class="white">Nuesta comunidad en español <br><a href="https://www.facebook.com/groups/555451053352612" target="_blank">Los Sims 1 | Español / Latam</a></h4>
+        <a href="https://www.facebook.com/groups/555451053352612" target="_blank"><img class="rounded"
+                      src="./img/grupo.jpg" alt="Facebook" style="width: 300px;"></a>
       </div>
+      <div class="class="col-lg-6 p-1">      
+      <h4 class="white">Donaciones y Agradecimientos <br><a href="https://paypal.me/lioneagle11?country.x=UY&locale.x=es_XC" target="_blank">Paypal</a></h4>
+      <a href="https://paypal.me/lioneagle11?country.x=UY&locale.x=es_XC" target="_blank"><img class="rounded"
+                      src="./img/Paypal.png" alt="Paypal" style="width: 300px;"></a>
+      </div>
+
+      </div>
+      <br>
       <h5 class="center">El objetivo de esta pagina es ofrecer informacion clasificada sobre las carreras laborales de Los Sims 1.</h5>
           <br>
       <h5>Inicio del proyecto 27/12/2024.</h4>
