@@ -346,6 +346,38 @@ function workTable(work) {
     count += 1;
   }
   content += `</tbody></table></div>`;
+
+    //autos
+    tab += `<button class="nav-link" id="v-pills-cars-tab" data-bs-toggle="pill" data-bs-target="#v-pills-cars"
+    type="button" role="tab" aria-controls="v-pills-cars" aria-selected="false">Transporte</button>`;
+content += `<div class="tab-pane fade sims_div p-3" id="v-pills-cars" role="tabpanel" aria-labelledby="v-pills-descripcion-tab"
+    tabindex="0">
+<div class="list-group-item container text-center col-lg-6 col-md-10 col-sm-12 p-1 mb-3">
+<h1 id="card" class="p-2">Transporte</h1>
+</div>
+<table class="table table-success table-striped">
+<thead>
+<tr>
+<th scope="col">Nivel</th>
+<th scope="col">Nombre</th>
+<th scope="col">Coche</th>
+<th scope="col">Transporte</th>
+</tr>
+</thead>
+<tbody>`;
+count = 1;
+for (const element in workLevels) {
+const level = workLevels[element];
+content += `
+<tr>
+<th scope="row">${count}</th>
+<td>${level.nameEs}</td>
+<td>${level.carNameUs}</td>
+<td><img src="./img/cars/${level.carNameUs}.png" alt="${level.carNameUs}" style="width: 100px;"></td>
+</tr>`;
+count += 1;
+}
+content += `</tbody></table></div>`;
   document.getElementById("v-pills-tab").innerHTML = tab;
   document.getElementById("v-pills-tabContent").innerHTML = content;
 }
