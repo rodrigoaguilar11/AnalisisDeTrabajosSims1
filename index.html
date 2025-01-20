@@ -17,17 +17,17 @@
     <header id="header">
         <nav class="navbar navbar-expand-lg bg-body-tertiary" id="nav">
             <div class="container-fluid">
+
+                <button class="btn btn-primary navbar-toggler sims_btn" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Menu</button>
+
                 <a href="index.html"><img id="logo" src="img/the_sims_logo.png"></a>
-                <a class="navbar-brand white" href="index.html">Clasificador de Trabajos</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <a class="navbar-brand white" href="index.html">Clasificador de Trabajos</a>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <button class="sims_btn"><a href="index.html" id="concepts"><span>Conceptos</span></a></button>
+                            <button class="sims_btn"><a href="index.html"
+                                    id="concepts"><span>Conceptos</span></a></button>
                         </li>
                         <li class="nav-item">
                             <button class="sims_btn"><a href="#" id="about"><span>Acerca de</span></a></button>
@@ -65,7 +65,7 @@
                                 Más vivos que nunca
                             </a>
                             <ul class="dropdown-menu">
-                                
+
 
                             </ul>
                         </li>
@@ -76,7 +76,7 @@
                                 Animales a raudales
                             </a>
                             <ul class="dropdown-menu">
-                                
+
 
                             </ul>
                         </li>
@@ -86,18 +86,102 @@
         </nav>
     </header>
     <br><br>
-    <div id="title"class="list-group-item container col-lg-5 col-md-10 col-sm-12 p-2 mt-5 sims_div center d-flex"></div>
-    <br><div id="subtitle"></div>
-    <div class="col-lg-10 col-md-12 col-sm-12 row offset-lg-1 offset-md-0 offset-sm-0">
-        <div class="col-lg-2 col-md-12 col-sm-12">
-            <div class="nav nav-pills me-3 col-lg-12 col-md-12 col-sm-12 row" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <main>
+        <div class="offcanvas offcanvas-start sims_div" data-bs-scroll="true" tabindex="-1"
+            id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+            <div class="offcanvas-header">
+                <h2 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"><a class="navbar-brand white"
+                        href="index.html">Clasificador de Trabajos</a></h2>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <button class="sims_btn"><a href="index.html" id="concepts"><span>Conceptos</span></a></button>
+                    </li>
+                    <br>
+                    <li class="nav-item">
+                        <button class="sims_btn"><a href="#" id="oc_about"><span>Acerca de</span></a></button>
+                    </li>
+                    <br>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle white" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Organizar por...
+                        </a>
+                        <ul class="dropdown-menu sims_div p-4">
+                            <li>
+                                <button class="sims_btn"><a class="dropdown-item" href="#"
+                                        id="oc_salary">Salario</a></button>
+                            </li>
+                            <br>
+                            <li><button class="sims_btn"><a class="dropdown-item" href="#"
+                                        id="oc_friends">Amigos</a></button></li>
+                            <br>
+                            <li><button class="sims_btn"><a class="dropdown-item" href="#"
+                                        id="oc_skills">Habilidades</a></button></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle white" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Juego Base
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" id="oc_business">Negocios</a></li>
+                            <li><a class="dropdown-item" href="#" id="oc_entertainment">Entretenimiento</a></li>
+                            <li><a class="dropdown-item" href="#" id="oc_law_enforcement">Cuerpos de seguridad</a></li>
+                            <li><a class="dropdown-item" href="#" id="oc_life_of_crime">Criminal</a></li>
+                            <li><a class="dropdown-item" href="#" id="oc_medicine">Medicina</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle white" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Más vivos que nunca
+                        </a>
+                        <ul class="dropdown-menu">
+
+
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle white" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Animales a raudales
+                        </a>
+                        <ul class="dropdown-menu">
+
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="title" class="list-group-item container col-lg-5 col-md-10 col-sm-12 p-2 mt-5 sims_div center d-flex">
+        </div>
+        <br>
+        <div id="subtitle">
+
+        </div>
+        <div class="col-lg-10 col-md-12 col-sm-12 row offset-lg-1 offset-md-0 offset-sm-0">
+            <div class="col-lg-2 col-md-12 col-sm-12">
+                <div class="nav nav-pills me-3 col-lg-12 col-md-12 col-sm-12 row m-2" id="v-pills-tab" role="tablist"
+                    aria-orientation="vertical">
+
+                </div>
+            </div>
+            <div class="col-lg-10 col-md-12 col-sm-12 tab-content" id="v-pills-tabContent">
 
             </div>
         </div>
-        <div class="col-lg-10 col-md-12 col-sm-12 tab-content" id="v-pills-tabContent">
-
-        </div>
-    </div>
+    </main>
 </body>
 <script src="script/works.js" charset="utf-8"></script>
 <script src="script/functions.js" charset="utf-8"></script>

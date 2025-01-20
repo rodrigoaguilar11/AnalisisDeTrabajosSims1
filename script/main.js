@@ -43,6 +43,47 @@ document.addEventListener("DOMContentLoaded", function (e) {
     workTable("Medicine");
   });
   mainPage();
+  //canvas menu
+  document.getElementById("oc_salary").addEventListener("click", () => {
+    sortTable(sortArgument(clasifyLevels, "salary", "asc"), "Salario");
+  });
+  document.getElementById("oc_friends").addEventListener("click", () => {
+    sortTable(sortArgument(clasifyLevels, "friends", "asc"), "Amigos");
+  });
+  document.getElementById("oc_skills").addEventListener("click", () => {
+    sortTable(
+      sortArgument(
+        clasifyLevels,
+        skills[0] / 100 +
+          skills[1] / 100 +
+          skills[2] / 100 +
+          skills[3] / 100 +
+          skills[4] / 100 +
+          skills[5] / 100,
+        "des"
+      ),
+      "Habilidades"
+    );
+  });
+  document.getElementById("oc_about").addEventListener("click", () => {
+    about();
+  });
+  //Trabajos
+  document.getElementById("oc_business").addEventListener("click", () => {
+    workTable("Business");
+  });
+  document.getElementById("oc_entertainment").addEventListener("click", () => {
+    workTable("Entertainment");
+  });
+  document.getElementById("oc_law_enforcement").addEventListener("click", () => {
+    workTable("Law Enforcement");
+  });
+  document.getElementById("oc_life_of_crime").addEventListener("click", () => {
+    workTable("Life of Crime");
+  });
+  document.getElementById("oc_medicine").addEventListener("click", () => {
+    workTable("Medicine");
+  });
 });
 
 function mainPage() {
@@ -50,12 +91,12 @@ function mainPage() {
     "title"
   ).innerHTML = `<h1>Bienvenido a la pagina para clasificar trabajos en Los Sims 1</h1>`;
   document.getElementById("subtitle").innerHTML = `
-            <div class="p-4 container col d-flex">
+            <div class="p-4 d-sm-flex d-md-flex">
                     <div class="sims_div p-3 m-1">
-                      <h4 class="center">Conceptos de Adultos</h4>
-                      <br>
-                      <h4>Cartas de oportunidad y Cambio de carrera</h4>
-                      <h5>Algunos niveles de algunos trabajos tienen cartas de oportunidad, De forma nativa cada carrera en el nivel 10 tiene una de cambio de carrera.
+                       <h4 class="center">Conceptos de Adultos</h4>
+                       <br>
+                       <h4>Cartas de oportunidad y Cambio de carrera</h4>
+                       <h5>Algunos niveles de algunos trabajos tienen cartas de oportunidad, De forma nativa cada carrera en el nivel 10 tiene una de cambio de carrera.
                        Esto significa que cuando el sim vaya a trabajar tiene un 12% de que pueda comenzar otra carrera desde un nivel bajo, para evitarlo podemos mantenernos en el nivel 9</h5>
                        <br>
                        <h4>Ascenso y Bonus</h4>
@@ -63,9 +104,8 @@ function mainPage() {
                        <br>
                        <h4>Puntos de Habilidad</h4>
                        <h5>Internamente los puntos de habilidad se cuentan de a 100 y no de a 1, esto permite ejemplo: tener 150 puntos de cocina, significa 1 y media barra, a fines practicos las mediremos de a 1 y no 100</h5>
-                       </div>
-
-                       <div class="sims_div p-3 m-1">
+                    </div>
+                    <div class="sims_div p-3 m-1">
                         <h4 class="center">Conceptos de niños</h4>
                         <br>             
                        <h4>Bonus de niños</h4>
@@ -73,7 +113,7 @@ function mainPage() {
                        <br>
                        <h4>Notas de niños</h4>
                        <h5>Los niños suben la nota si al volver de la escuela tienen 40 puntos de animo y bajan la nota si tienen menos de 0 (El animo se mide desde -100 a 100)</h5>                  
-                       </div>
+                    </div>
             </div>
         `;
 }
