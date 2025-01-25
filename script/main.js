@@ -42,7 +42,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementById("medicine").addEventListener("click", () => {
     workTable("Medicine");
   });
+  document.getElementById("military").addEventListener("click", () => {
+    workTable("Military");
+  });
   mainPage();
+
   //canvas menu
   document.getElementById("oc_salary").addEventListener("click", () => {
     sortTable(sortArgument(clasifyLevels, "salary", "asc"), "Salario");
@@ -84,6 +88,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementById("oc_medicine").addEventListener("click", () => {
     workTable("Medicine");
   });
+  document.getElementById("oc_military").addEventListener("click", () => {
+    workTable("Military");
+  });
 });
 
 function mainPage() {
@@ -104,6 +111,9 @@ function mainPage() {
                        <br>
                        <h4>Puntos de Habilidad</h4>
                        <h5>Internamente los puntos de habilidad se cuentan de a 100 y no de a 1, esto permite ejemplo: tener 150 puntos de cocina, significa 1 y media barra, a fines practicos las mediremos de a 1 y no 100</h5>
+                       <br>
+                       <h4>Diferencias</h4>
+                       <h5>Algunas cartas de oportunidad no coinciden en la descripción con el efecto dado, según las expansiones instaladas las cartas de oportunidad pueden variar, según el idioma los textos pueden variar, no así los efectos.</h5>
                     </div>
                     <div class="sims_div p-3 m-1">
                         <h4 class="center">Conceptos de niños</h4>
@@ -124,11 +134,11 @@ function workTable(work) {
   )[0];
 
   document.getElementById("title").innerHTML =
-    `<img class="p-2 m-1"src="img/${actualWork.carrerNameUs}.bmp"><h1 class="m-auto">` +
+    `<img class="p-2 m-1"src="img/works/${actualWork.carrerNameUs}.png"><h1 class="m-auto">` +
     actualWork.carrerNameEs +
     " - " +
     actualWork.expansion +
-    `</h1><img class="p-2 m-1"src="img/${actualWork.carrerNameUs}.bmp">`;
+    `</h1><img class="p-2 m-1"src="img/works/${actualWork.carrerNameUs}.png">`;
 
   let tab = `<div class="sims_div p-3 row">`;
   let content = "";
@@ -147,6 +157,7 @@ function workTable(work) {
     <th scope="col">Nivel</th>
     <th scope="col">Nombre</th>
     <th scope="col">Salario</th>
+    <th scope="col">Salario/hora</th>
     <th scope="col">Bonificacion</th>
     <th scope="col">Auto</th>
     <th scope="col">Entrada</th>
@@ -171,6 +182,7 @@ function workTable(work) {
     <th scope="row">${count}</th>
     <td>${level.nameEs}</td>
     <td>§${level.salary}</td>
+    <td>§${Math.round(level.salary/workHours(level))}</td>
     <td>§${bonus}</td>
     <td>${carHour(level.begintime)}</td>
     <td>${level.begintime}</td>
@@ -453,6 +465,7 @@ function sortTable(array, argument) {
     <th scope="col">Carrera</th>
     <th scope="col">Puesto</th>
     <th scope="col">Salario</th>
+    <th scope="col">Salario/hora</th>
     <th scope="col">Horas</th>
     <th scope="col">Amigos</th>
     <th scope="col">Habilidades</th>
@@ -472,6 +485,7 @@ function sortTable(array, argument) {
         <td>${work.carrerNameEs}</td>
         <td>${actualCareer.nameEs}</td>
         <td>§${actualCareer.salary}</td>
+        <td>§${Math.round(actualCareer.salary/workHours(actualCareer))}</td>
         <td>${workHours(actualCareer)}</td>
         <td>${actualCareer.friends}</td>
         <td>${totalSkills(actualCareer)}</td>
