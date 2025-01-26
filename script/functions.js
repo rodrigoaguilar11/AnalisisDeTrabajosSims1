@@ -8,6 +8,14 @@ function workHours(array) {
   }
 }
 
+function workHoursArgument(begin,end) {
+  if (end > begin) {
+    return end - begin;
+  } else {
+    return 24 - begin + end;
+  }
+}
+
 function carHour(begin) {
   if (begin == 0) {
     return 23;

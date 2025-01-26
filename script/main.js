@@ -23,6 +23,18 @@ document.addEventListener("DOMContentLoaded", function (e) {
       "Habilidades"
     );
   });
+
+  document.getElementById("salary_hour").addEventListener("click", () => {
+    sortTable(
+      sortArgument(
+        clasifyLevels,
+        "salary" / workHoursArgument("begintime", "endtime"),
+        "asc"
+      ),
+      "Salario por horas"
+    );
+  });
+
   document.getElementById("about").addEventListener("click", () => {
     about();
   });
@@ -45,6 +57,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementById("military").addEventListener("click", () => {
     workTable("Military");
   });
+  document.getElementById("politics").addEventListener("click", () => {
+    workTable("Politics");
+  })
   mainPage();
 
   //canvas menu
@@ -80,8 +95,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
     workTable("Entertainment");
   });
   document.getElementById("oc_law_enforcement").addEventListener("click", () => {
-    workTable("Law Enforcement");
-  });
+      workTable("Law Enforcement");
+    });
   document.getElementById("oc_life_of_crime").addEventListener("click", () => {
     workTable("Life of Crime");
   });
@@ -90,6 +105,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
   });
   document.getElementById("oc_military").addEventListener("click", () => {
     workTable("Military");
+  });
+  document.getElementById("oc_politics").addEventListener("click", () => {
+    workTable("Politics");
   });
 });
 
@@ -182,7 +200,7 @@ function workTable(work) {
     <th scope="row">${count}</th>
     <td>${level.nameEs}</td>
     <td>§${level.salary}</td>
-    <td>§${Math.round(level.salary/workHours(level))}</td>
+    <td>§${Math.round(level.salary / workHours(level))}</td>
     <td>§${bonus}</td>
     <td>${carHour(level.begintime)}</td>
     <td>${level.begintime}</td>
@@ -260,6 +278,7 @@ function workTable(work) {
     <th scope="col">Diversion</th>
     <th scope="col">Social</th>
     <th scope="col">Total por hora</th>
+    <th scope="col">Salario/hora</th>
   </tr>
 </thead>
 <tbody>`;
@@ -277,6 +296,7 @@ function workTable(work) {
   <td>${level.moodChangesPerHour[5]}</td>
   <td>${level.moodChangesPerHour[6]}</td>
   <td>${totalMoodChanges(level)}</td>
+  <td>§${Math.round(level.salary / workHours(level))}</td>
 </tr>`;
     count += 1;
   }
@@ -399,10 +419,10 @@ function workTable(work) {
   }
   content += `</tbody></table></div>`;
 
-    //autos
-    tab += `<button class="nav-link" id="v-pills-cars-tab" data-bs-toggle="pill" data-bs-target="#v-pills-cars"
+  //autos
+  tab += `<button class="nav-link" id="v-pills-cars-tab" data-bs-toggle="pill" data-bs-target="#v-pills-cars"
     type="button" role="tab" aria-controls="v-pills-cars" aria-selected="false">Transporte</button>`;
-content += `<div class="tab-pane fade sims_div p-3" id="v-pills-cars" role="tabpanel" aria-labelledby="v-pills-descripcion-tab"
+  content += `<div class="tab-pane fade sims_div p-3" id="v-pills-cars" role="tabpanel" aria-labelledby="v-pills-descripcion-tab"
     tabindex="0">
 <div class="list-group-item container text-center col-lg-6 col-md-10 col-sm-12 p-1 mb-3">
 <h1 id="card" class="p-2">Transporte</h1>
@@ -417,19 +437,19 @@ content += `<div class="tab-pane fade sims_div p-3" id="v-pills-cars" role="tabp
 </tr>
 </thead>
 <tbody>`;
-count = 1;
-for (const element in workLevels) {
-const level = workLevels[element];
-content += `
+  count = 1;
+  for (const element in workLevels) {
+    const level = workLevels[element];
+    content += `
 <tr>
 <th scope="row">${count}</th>
 <td>${level.nameEs}</td>
 <td>${level.carNameUs}</td>
 <td><img src="./img/cars/${level.carNameUs}.png" alt="${level.carNameUs}" style="width: 100px;"></td>
 </tr>`;
-count += 1;
-}
-content += `</tbody></table></div>`;
+    count += 1;
+  }
+  content += `</tbody></table></div>`;
   document.getElementById("v-pills-tab").innerHTML = tab;
   document.getElementById("v-pills-tabContent").innerHTML = content;
 }
@@ -485,7 +505,7 @@ function sortTable(array, argument) {
         <td>${work.carrerNameEs}</td>
         <td>${actualCareer.nameEs}</td>
         <td>§${actualCareer.salary}</td>
-        <td>§${Math.round(actualCareer.salary/workHours(actualCareer))}</td>
+        <td>§${Math.round(actualCareer.salary / workHours(actualCareer))}</td>
         <td>${workHours(actualCareer)}</td>
         <td>${actualCareer.friends}</td>
         <td>${totalSkills(actualCareer)}</td>
@@ -511,7 +531,9 @@ function about() {
   document.getElementById("v-pills-tabContent").innerHTML = ``;
   document.getElementById("v-pills-tab").innerHTML = ``;
 
-  document.getElementById("subtitle").innerHTML = `<div class="container center">
+  document.getElementById(
+    "subtitle"
+  ).innerHTML = `<div class="container center">
   <div class="p-4 sims_div">
       <div class="col d-block d-lg-flex">
           
