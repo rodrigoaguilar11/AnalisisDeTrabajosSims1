@@ -60,9 +60,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementById("politics").addEventListener("click", () => {
     workTable("Politics");
   })
-  document.getElementById("pro_athlete").addEventListener("click", () => {
-    workTable("Pro Athlete");
-  })
   mainPage();
 
   //canvas menu
@@ -112,9 +109,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementById("oc_politics").addEventListener("click", () => {
     workTable("Politics");
   });
-  document.getElementById("oc_pro_athlete").addEventListener("click", () => {
-    workTable("Pro Athlete");
-  })
 });
 
 function mainPage() {
@@ -138,7 +132,6 @@ function mainPage() {
                        <br>
                        <h4>Diferencias</h4>
                        <h5>Algunas cartas de oportunidad no coinciden en la descripción con el efecto dado, según las expansiones instaladas las cartas de oportunidad pueden variar, según el idioma los textos pueden variar, no así los efectos.</h5>
-                       <h5>Internamente los puestos de las carreras son del 0 al 9 siendo 0 el primer nivel, aqui las nombraremos del 1 al 10.</h5>
                     </div>
                     <div class="sims_div p-3 m-1">
                         <h4 class="center">Conceptos de niños</h4>
@@ -331,6 +324,7 @@ function workTable(work) {
   <th scope="col">Social</th>
   <th scope="col">Total por dia</th>    
   <th scope="col">Horas</th>
+  <th scope="col">Puntaje</th>
   <th scope="col">Salario</th>
 </tr>
 </thead>
@@ -352,6 +346,7 @@ function workTable(work) {
 <td>${level.moodChangesPerHour[6] * hoursDay}</td>
 <td>${totalMood * hoursDay}</td>
 <td>${hoursDay}</td>
+<td>${totalMood * hoursDay * hoursDay}</td>
 <td>§${level.salary}</td>
 </tr>
 `;
