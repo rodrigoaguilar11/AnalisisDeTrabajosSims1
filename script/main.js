@@ -60,6 +60,18 @@ document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementById("politics").addEventListener("click", () => {
     workTable("Politics");
   })
+<<<<<<< HEAD
+=======
+  document.getElementById("pro_athlete").addEventListener("click", () => {
+    workTable("Pro Athlete");
+  })
+  document.getElementById("science").addEventListener("click", () => {
+    workTable("Science");
+  })
+  document.getElementById("x-treme_career").addEventListener("click", () => {
+    workTable("X-Treme Career");
+  })
+>>>>>>> ca418e2572fe2ab8c25b6fd20e7641c21bf0ce1b
   mainPage();
 
   //canvas menu
@@ -109,6 +121,18 @@ document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementById("oc_politics").addEventListener("click", () => {
     workTable("Politics");
   });
+<<<<<<< HEAD
+=======
+  document.getElementById("oc_pro_athlete").addEventListener("click", () => {
+    workTable("Pro Athlete");
+  })
+  document.getElementById("oc_science").addEventListener("click", () => {
+    workTable("Science");
+  })
+  document.getElementById("oc_x-treme_career").addEventListener("click", () => {
+    workTable("X-Treme Career");
+  })
+>>>>>>> ca418e2572fe2ab8c25b6fd20e7641c21bf0ce1b
 });
 
 function mainPage() {
@@ -360,9 +384,9 @@ function workTable(work) {
                 type="button" role="tab" aria-controls="v-pills-cartasoportunidad" aria-selected="false">Cartas de oportunidad</button>`;
   content += `<div class="tab-pane fade sims_div p-3" id="v-pills-cartasoportunidad" role="tabpanel" aria-labelledby="v-pills-cartasoportunidad-tab"
                 tabindex="0">
-<div class="list-group-item container text-center col-lg-6 col-md-10 col-sm-12 p-1 mb-3">
+<div class="list-group-item container text-center col-lg-8 col-md-10 col-sm-12 p-1 mb-3">
     <h1 id="card" class="p-2">Cartas de oportunidad</h1>
-    <h5>Cuando el sim trabaja hay un 12% de obtener la carta por nivel.</h5>
+    <h5>Cuando el sim trabaja hay un 12% de obtener la carta por nivel al volver del trabajo.</h5>
 </div>
 <table class="table table-success table-striped">
 <thead>
