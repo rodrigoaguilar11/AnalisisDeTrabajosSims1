@@ -63,6 +63,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementById("pro_athlete").addEventListener("click", () => {
     workTable("Pro Athlete");
   })
+  document.getElementById("science").addEventListener("click", () => {
+    workTable("Science");
+  })
+  document.getElementById("x-treme_career").addEventListener("click", () => {
+    workTable("X-Treme Career");
+  })
   mainPage();
 
   //canvas menu
@@ -115,6 +121,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementById("oc_pro_athlete").addEventListener("click", () => {
     workTable("Pro Athlete");
   })
+  document.getElementById("oc_science").addEventListener("click", () => {
+    workTable("Science");
+  })
+  document.getElementById("oc_x-treme_career").addEventListener("click", () => {
+    workTable("X-Treme Career");
+  })
 });
 
 function mainPage() {
@@ -138,7 +150,6 @@ function mainPage() {
                        <br>
                        <h4>Diferencias</h4>
                        <h5>Algunas cartas de oportunidad no coinciden en la descripción con el efecto dado, según las expansiones instaladas las cartas de oportunidad pueden variar, según el idioma los textos pueden variar, no así los efectos.</h5>
-                       <h5>Internamente los puestos de las carreras son del 0 al 9 siendo 0 el primer nivel, aqui las nombraremos del 1 al 10.</h5>
                     </div>
                     <div class="sims_div p-3 m-1">
                         <h4 class="center">Conceptos de niños</h4>
@@ -331,6 +342,7 @@ function workTable(work) {
   <th scope="col">Social</th>
   <th scope="col">Total por dia</th>    
   <th scope="col">Horas</th>
+  <th scope="col">Puntaje</th>
   <th scope="col">Salario</th>
 </tr>
 </thead>
@@ -352,6 +364,7 @@ function workTable(work) {
 <td>${level.moodChangesPerHour[6] * hoursDay}</td>
 <td>${totalMood * hoursDay}</td>
 <td>${hoursDay}</td>
+<td>${totalMood * hoursDay * hoursDay}</td>
 <td>§${level.salary}</td>
 </tr>
 `;
@@ -365,9 +378,9 @@ function workTable(work) {
                 type="button" role="tab" aria-controls="v-pills-cartasoportunidad" aria-selected="false">Cartas de oportunidad</button>`;
   content += `<div class="tab-pane fade sims_div p-3" id="v-pills-cartasoportunidad" role="tabpanel" aria-labelledby="v-pills-cartasoportunidad-tab"
                 tabindex="0">
-<div class="list-group-item container text-center col-lg-6 col-md-10 col-sm-12 p-1 mb-3">
+<div class="list-group-item container text-center col-lg-8 col-md-10 col-sm-12 p-1 mb-3">
     <h1 id="card" class="p-2">Cartas de oportunidad</h1>
-    <h5>Cuando el sim trabaja hay un 12% de obtener la carta por nivel.</h5>
+    <h5>Cuando el sim trabaja hay un 12% de obtener la carta por nivel al volver del trabajo.</h5>
 </div>
 <table class="table table-success table-striped">
 <thead>
