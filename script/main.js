@@ -144,8 +144,8 @@ function mainPage() {
   ).innerHTML = `<h1>Bienvenido a la pagina para clasificar trabajos en Los Sims 1</h1>`;
   document.getElementById("subtitle").innerHTML = `
             <div class="p-4 d-sm-flex d-md-flex">
-                    <div class="sims_div p-3 m-1">
-                       <h4 class="center">Conceptos de Adultos</h4>
+                    <div class="sims_div p-4 m-1">
+                       <h2 class="center">Conceptos de Adultos</h2>
                        <br>
                        <h4>Cartas de oportunidad y Cambio de carrera</h4>
                        <h5>Algunos niveles de algunos trabajos tienen cartas de oportunidad, De forma nativa cada carrera en el nivel 10 tiene una de cambio de carrera.
@@ -159,9 +159,15 @@ function mainPage() {
                        <br>
                        <h4>Diferencias</h4>
                        <h5>Algunas cartas de oportunidad no coinciden en la descripción con el efecto dado, según las expansiones instaladas las cartas de oportunidad pueden variar, según el idioma los textos pueden variar, no así los efectos.</h5>
+                       <br>
+                       <h4>Necesidad Habitación</h4>
+                       <h5>La necesidad “habitación” no sufre decaimientos en el trabajo, ya que aunque el sim "no esté en el solar" le sigue afectando la habitación del exterior de la casa, deberías mantener un buen estado del patio, probablemente con una piscina grande para maximizar esa barra.</h5>
+                       <br>
+                       <h4>Vehículo Null</h4>
+                       <h5>Algunos puestos de trabajo no tienen un vehículo asignado, por defecto el juego les asigna uno según la expansión instalada.</h5>                   
                     </div>
-                    <div class="sims_div p-3 m-1">
-                        <h4 class="center">Conceptos de niños</h4>
+                    <div class="sims_div p-4 m-1">
+                        <h2 class="center">Conceptos de niños</h2>
                         <br>             
                        <h4>Bonus de niños</h4>
                        <h5>Los niños que van a estudiar con una nota de A++ tienen un 5% de recibir $100</h5>
