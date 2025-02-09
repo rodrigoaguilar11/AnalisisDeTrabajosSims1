@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementById("friends").addEventListener("click", () => {
     sortTable(sortArgument(clasifyLevels, "friends", "asc"), "Amigos");
   });
-  document.getElementById("skills").addEventListener("click", () => {
+ /* 
+ document.getElementById("skills").addEventListener("click", () => {
     sortTable(
       sortArgument(
         clasifyLevels,
@@ -34,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
       "Salario por horas"
     );
   });
-
+*/
   document.getElementById("about").addEventListener("click", () => {
     about();
   });
@@ -69,6 +70,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementById("x-treme_career").addEventListener("click", () => {
     workTable("X-Treme Career");
   })
+  document.getElementById("musician").addEventListener("click", () => {
+    workTable("Musician");
+  })
   mainPage();
 
   //canvas menu
@@ -78,6 +82,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementById("oc_friends").addEventListener("click", () => {
     sortTable(sortArgument(clasifyLevels, "friends", "asc"), "Amigos");
   });
+  /*
   document.getElementById("oc_skills").addEventListener("click", () => {
     sortTable(
       sortArgument(
@@ -93,6 +98,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
       "Habilidades"
     );
   });
+  */
   document.getElementById("oc_about").addEventListener("click", () => {
     about();
   });
@@ -126,6 +132,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
   })
   document.getElementById("oc_x-treme_career").addEventListener("click", () => {
     workTable("X-Treme Career");
+  })
+  document.getElementById("oc_musician").addEventListener("click", () => {
+    workTable("Musician");
   })
 });
 
