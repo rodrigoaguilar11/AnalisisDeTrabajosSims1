@@ -1,6 +1,46 @@
 const clasifyLevels = levelClasify(worklist);
+const doomListenersToLoad = [
+  {elementId: "business", work: "Business"},
+  {elementId: "entertainment", work: "Entertainment"},
+  {elementId: "law_enforcement", work: "Law Enforcement"},
+  {elementId: "life_of_crime", work: "Life of Crime"},
+  {elementId: "medicine", work: "Medicine"},
+  {elementId: "military", work: "Military"},
+  {elementId: "politics", work: "Politics"},
+  {elementId: "pro_athlete", work: "Pro Athlete"},
+  {elementId: "science", work: "Science"},
+  {elementId: "x-treme_career", work: "X-Treme Career"},
+  {elementId: "musician", work: "Musician"},
+  {elementId: "slacker", work: "Slacker"},
 
+];
+const doomListenersToLoadOc = [
+  {elementId: "oc_business", work: "Business"},
+  {elementId: "oc_entertainment", work: "Entertainment"},
+  {elementId: "oc_law_enforcement", work: "Law Enforcement"},
+  {elementId: "oc_life_of_crime", work: "Life of Crime"},
+  {elementId: "oc_medicine", work: "Medicine"},
+  {elementId: "oc_military", work: "Military"},
+  {elementId: "oc_politics", work: "Politics"},
+  {elementId: "oc_pro_athlete", work: "Pro Athlete"},
+  {elementId: "oc_science", work: "Science"},
+  {elementId: "oc_x-treme_career", work: "X-Treme Career"},
+  {elementId: "oc_musician", work: "Musician"},
+  {elementId: "oc_slacker", work: "Slacker"},
+
+];
+// {elementId: "", work: ""},
+function makeListeners(array){
+  array.forEach(function(e) {
+    document.getElementById(e.elementId).addEventListener("click", () => {
+      workTable(e.work);
+    });
+});
+}
 document.addEventListener("DOMContentLoaded", function (e) {
+  makeListeners(doomListenersToLoad)
+  makeListeners(doomListenersToLoadOc)
+
   //Nav menu anchor listeners
   document.getElementById("salary").addEventListener("click", () => {
     sortTable(sortArgument(clasifyLevels, "salary", "asc"), "Salario");
@@ -8,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementById("friends").addEventListener("click", () => {
     sortTable(sortArgument(clasifyLevels, "friends", "asc"), "Amigos");
   });
- /* 
+  /* 
  document.getElementById("skills").addEventListener("click", () => {
     sortTable(
       sortArgument(
@@ -40,39 +80,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     about();
   });
   //Trabajos
-  document.getElementById("business").addEventListener("click", () => {
-    workTable("Business");
-  });
-  document.getElementById("entertainment").addEventListener("click", () => {
-    workTable("Entertainment");
-  });
-  document.getElementById("law_enforcement").addEventListener("click", () => {
-    workTable("Law Enforcement");
-  });
-  document.getElementById("life_of_crime").addEventListener("click", () => {
-    workTable("Life of Crime");
-  });
-  document.getElementById("medicine").addEventListener("click", () => {
-    workTable("Medicine");
-  });
-  document.getElementById("military").addEventListener("click", () => {
-    workTable("Military");
-  });
-  document.getElementById("politics").addEventListener("click", () => {
-    workTable("Politics");
-  })
-  document.getElementById("pro_athlete").addEventListener("click", () => {
-    workTable("Pro Athlete");
-  })
-  document.getElementById("science").addEventListener("click", () => {
-    workTable("Science");
-  })
-  document.getElementById("x-treme_career").addEventListener("click", () => {
-    workTable("X-Treme Career");
-  })
-  document.getElementById("musician").addEventListener("click", () => {
-    workTable("Musician");
-  })
+
   mainPage();
 
   //canvas menu
@@ -102,40 +110,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementById("oc_about").addEventListener("click", () => {
     about();
   });
-  //Trabajos
-  document.getElementById("oc_business").addEventListener("click", () => {
-    workTable("Business");
-  });
-  document.getElementById("oc_entertainment").addEventListener("click", () => {
-    workTable("Entertainment");
-  });
-  document.getElementById("oc_law_enforcement").addEventListener("click", () => {
-      workTable("Law Enforcement");
-    });
-  document.getElementById("oc_life_of_crime").addEventListener("click", () => {
-    workTable("Life of Crime");
-  });
-  document.getElementById("oc_medicine").addEventListener("click", () => {
-    workTable("Medicine");
-  });
-  document.getElementById("oc_military").addEventListener("click", () => {
-    workTable("Military");
-  });
-  document.getElementById("oc_politics").addEventListener("click", () => {
-    workTable("Politics");
-  });
-  document.getElementById("oc_pro_athlete").addEventListener("click", () => {
-    workTable("Pro Athlete");
-  })
-  document.getElementById("oc_science").addEventListener("click", () => {
-    workTable("Science");
-  })
-  document.getElementById("oc_x-treme_career").addEventListener("click", () => {
-    workTable("X-Treme Career");
-  })
-  document.getElementById("oc_musician").addEventListener("click", () => {
-    workTable("Musician");
-  })
 });
 
 function mainPage() {
@@ -478,7 +452,7 @@ function workTable(work) {
 <th scope="row">${count}</th>
 <td>${level.nameEs}</td>
 <td>${level.carNameUs}</td>
-<td><img src="./img/cars/${level.carNameUs}.png" alt="${level.carNameUs}" style="width: 100px;"></td>
+<td><img class="cars" src="./img/cars/${level.carNameUs}.png" alt="${level.carNameUs}" style="width: 100px;"></td>
 </tr>`;
     count += 1;
   }

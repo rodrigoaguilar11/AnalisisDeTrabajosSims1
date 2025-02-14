@@ -70,7 +70,9 @@ nav {
     border: 6px outset rgb(98, 98, 172);
 }
 
-
+.cars {
+    min-width: 9em;
+}
 .center {
     text-align: center;
 }
@@ -159,4 +161,8 @@ button.sims_btn:active{
     color: rgb(218, 218, 218);
     display: block;
     transform: skewX(25deg);
+}
+
+.canvaSize{
+    width: 20em !important
 }
