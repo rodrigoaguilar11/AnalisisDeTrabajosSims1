@@ -12,34 +12,30 @@ const doomListenersToLoad = [
   {elementId: "x-treme_career", work: "X-Treme Career"},
   {elementId: "musician", work: "Musician"},
   {elementId: "slacker", work: "Slacker"},
-
+  {elementId: "slacker", work: "Slacker"},
+  {elementId: "paranormal", work: "Paranormal"},
+  {elementId: "journalism", work: "Journalism"},
+  {elementId: "hacker", work: "Hacker"},
+  {elementId: "fashion", work: "Fashion"},
+  {elementId: "education", work: "Education"},
+  {elementId: "animal_care", work: "Animal Care"},
+  {elementId: "culinary", work: "Culinary"},
+  {elementId: "circus", work: "Circus"},
 ];
-const doomListenersToLoadOc = [
-  {elementId: "oc_business", work: "Business"},
-  {elementId: "oc_entertainment", work: "Entertainment"},
-  {elementId: "oc_law_enforcement", work: "Law Enforcement"},
-  {elementId: "oc_life_of_crime", work: "Life of Crime"},
-  {elementId: "oc_medicine", work: "Medicine"},
-  {elementId: "oc_military", work: "Military"},
-  {elementId: "oc_politics", work: "Politics"},
-  {elementId: "oc_pro_athlete", work: "Pro Athlete"},
-  {elementId: "oc_science", work: "Science"},
-  {elementId: "oc_x-treme_career", work: "X-Treme Career"},
-  {elementId: "oc_musician", work: "Musician"},
-  {elementId: "oc_slacker", work: "Slacker"},
 
-];
 // {elementId: "", work: ""},
 function makeListeners(array){
   array.forEach(function(e) {
     document.getElementById(e.elementId).addEventListener("click", () => {
       workTable(e.work);
     });
+    document.getElementById("oc_"+e.elementId).addEventListener("click", () => {
+      workTable(e.work);
+    });
 });
 }
 document.addEventListener("DOMContentLoaded", function (e) {
   makeListeners(doomListenersToLoad)
-  makeListeners(doomListenersToLoadOc)
 
   //Nav menu anchor listeners
   document.getElementById("salary").addEventListener("click", () => {
@@ -139,6 +135,9 @@ function mainPage() {
                        <br>
                        <h4>Vehículo Null</h4>
                        <h5>Algunos puestos de trabajo no tienen un vehículo asignado, por defecto el juego les asigna uno según la expansión instalada.</h5>                   
+                       <br>
+                       <h4></h4>
+                       <h5></h5>
                     </div>
                     <div class="sims_div p-4 m-1">
                         <h2 class="center">Conceptos de niños</h2>
