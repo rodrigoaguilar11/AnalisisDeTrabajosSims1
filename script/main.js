@@ -121,8 +121,11 @@ function mainPage() {
                        <h5>Algunos niveles de algunos trabajos tienen cartas de oportunidad, De forma nativa cada carrera en el nivel 10 tiene una de cambio de carrera.
                        Esto significa que cuando el sim vaya a trabajar tiene un 12% de que pueda comenzar otra carrera desde un nivel bajo, para evitarlo podemos mantenernos en el nivel 9</h5>
                        <br>
-                       <h4>Ascenso y Bonus</h4>
-                       <h5>La descripcion de los ascensos es la misma que la de trabajo, el bonus de ascenso es el nuevo salario multiplicado por 2</h5>                   
+                       <h4>Conseguir un Ascenso</h4>
+                       <h5>Para conseguir un ascenso se deben cumplir los requisitos del siguiente nivel al actual e ir a trabajar de buen estado de ánimo así tendrás más posibilidades de ascenso</h5>
+                       <br>
+                       <h4>Bonificación de Ascenso</h4>
+                       <h5>El dinero bonus de ascenso es el nuevo salario multiplicado por 2</h5>                   
                        <br>
                        <h4>Puntos de Habilidad</h4>
                        <h5>Internamente los puntos de habilidad se cuentan de a 100 y no de a 1, esto permite ejemplo: tener 150 puntos de cocina, significa 1 y media barra, a fines practicos las mediremos de a 1 y no 100</h5>
@@ -136,8 +139,13 @@ function mainPage() {
                        <h4>Vehículo Null</h4>
                        <h5>Algunos puestos de trabajo no tienen un vehículo asignado, por defecto el juego les asigna uno según la expansión instalada.</h5>                   
                        <br>
-                       <h4></h4>
-                       <h5></h5>
+                       <h4>Tomar Dias Libres</h4>
+                       <h5>Los adultos pueden faltar un día al trabajo sin perderlo, recibirán una llamada de advertencia, pero no tiene consecuencia, si al siguiente día faltan si perderán el trabajo debiendo empezar con otro desde el nivel 1.
+                       <br>Entonces puedes trabajar un día si y otro no indefinidamente sin peligro y aprovechar los días libres para hacer amigos, subir habilidades, hacer fiestas, etc...</h5>
+                       <br>
+                       <h4>Auto compartido</h4>
+                       <h5>El auto esperará una hora (entre la hora de llegada y hora de entrada).
+                       <br>Puedes ir al trabajo hasta unos pocos segundos antes de que se vaya sin repercusión negativa en el desempeño y así aprovechar más tiempo en la casa para subir necesidades, habilidades, hacer amigos, etc...</h5>
                     </div>
                     <div class="sims_div p-4 m-1">
                         <h2 class="center">Conceptos de niños</h2>
@@ -147,6 +155,13 @@ function mainPage() {
                        <br>
                        <h4>Notas de niños</h4>
                        <h5>Los niños suben la nota si al volver de la escuela tienen 40 puntos de animo y bajan la nota si tienen menos de 0 (El animo se mide desde -100 a 100)</h5>                  
+                       <br>
+                       <h4>Tomar Dias Libres</h4>
+                       <h5>Los niños cuando faltan a la escuela pierden un grado entero de nota ejemplo: de A+ a B+, de B- a C- o C a D.
+                       <br>Si las notas son buenas pueden faltar varios días sin que se lo lleve la escuela militar, pero siempre hay que monitorizar las notas.</h5>
+                       <br>
+                       <h4>Subir notas express</h4>
+                       <h5>Si recibes la advertencia de la escuela militar pon el juego en pausa, llama por teléfono para ir a ciudad vieja y visita a miss Lucile para con la lectura de manos subir las necesidades del niño, al volver cerca de la entrada compra un telescopio y pon el niño a ver entonces subirán las notas rápidamente, tambien puedes utilizar hechizos de alegria con el Niño.</h5>
                     </div>
             </div>
         `;
@@ -477,11 +492,11 @@ function sortTable(array, argument) {
   array.forEach(
     (element) => (
       (tab += `
-      <button class="nav-link" id="v-pills-nivel${countLevel}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-nivel${countLevel}"
+      <button class="nav-link ${countLevel=="1" ? "active" : ""}" id="v-pills-nivel${countLevel}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-nivel${countLevel}"
      type="button" role="tab" aria-controls="v-pills-nivel${countLevel}" aria-selected="false">Nivel ${countLevel}</button>`),
-      (content += `<div class="tab-pane fade sims_div p-3" id="v-pills-nivel${countLevel}" role="tabpanel" aria-labelledby="v-pills-nivel${countLevel}-tab"
+      (content += `<div class="tab-pane sims_div p-3 ${countLevel=="1" ? "active" : "fade"}" id="v-pills-nivel${countLevel}" role="tabpanel" aria-labelledby="v-pills-nivel${countLevel}-tab"
       tabindex="0">
-      <div class="list-group-item container text-center col-lg-5 col-md-10 col-sm-12">
+      <div class="list-group-item container text-center col-lg-5 col-md-10 col-sm-12 ">
     <h1 id="card">Nivel ${countLevel}</h1>
 </div>
     <table class="table table-success table-striped">
