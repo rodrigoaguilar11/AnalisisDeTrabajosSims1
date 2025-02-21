@@ -39,14 +39,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
   //Nav menu anchor listeners
   document.getElementById("salary").addEventListener("click", () => {
-    sortTable(sortArgument(clasifyLevels, "salary", "asc"), "Salario");
+    makeSortedTable(sortLevelsForArgument(clasifyLevels, "salary", "asc"), "Salario");
   });
   document.getElementById("friends").addEventListener("click", () => {
-    sortTable(sortArgument(clasifyLevels, "friends", "asc"), "Amigos");
+    makeSortedTable(sortLevelsForArgument(clasifyLevels, "friends", "asc"), "Amigos");
   });
   /* 
  document.getElementById("skills").addEventListener("click", () => {
-    sortTable(
+    makeSortedTable(
       sortArgument(
         clasifyLevels,
         skills[0] / 100 +
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
   });
 
   document.getElementById("salary_hour").addEventListener("click", () => {
-    sortTable(
+    makeSortedTable(
       sortArgument(
         clasifyLevels,
         "salary" / workHoursArgument("begintime", "endtime"),
@@ -86,8 +86,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
   document.getElementById("oc_friends").addEventListener("click", () => {
     sortTable(sortArgument(clasifyLevels, "friends", "asc"), "Amigos");
   });
-  /*
-  document.getElementById("oc_skills").addEventListener("click", () => {
+  
+  /*document.getElementById("oc_skills").addEventListener("click", () => {
     sortTable(
       sortArgument(
         clasifyLevels,
@@ -475,7 +475,7 @@ function workTable(work) {
   document.getElementById("v-pills-tabContent").innerHTML = content;
 }
 
-function sortTable(array, argument) {
+function makeSortedTable(array, argument) {
   document.getElementById("subtitle").innerHTML = ``;
   document.getElementById("title").innerHTML =
     `<h1 class="m-auto">` + argument + " por Niveles</h1>";

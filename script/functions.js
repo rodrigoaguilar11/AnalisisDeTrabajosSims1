@@ -80,14 +80,14 @@ function levelClasify(list) {
   return classified;
 }
 
-function sortArgument(data, argument, orden) {
+function sortLevelsForArgument(data, argument, order) {
   return data.map(nivel => {
     return {
       ...nivel,
       careers: [...nivel.careers].sort((a, b) => {
         const salaryA = a.levelData[argument];
         const salaryB = b.levelData[argument];
-        if (orden=="des"){
+        if (order=="des"){
           return salaryB - salaryA
         }else{
           return  salaryA - salaryB
