@@ -81,10 +81,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
   //canvas menu
   document.getElementById("oc_salary").addEventListener("click", () => {
-    sortTable(sortArgument(clasifyLevels, "salary", "asc"), "Salario");
+    makeSortedTable(sortLevelsForArgument(clasifyLevels, "salary", "asc"), "Salario");
   });
   document.getElementById("oc_friends").addEventListener("click", () => {
-    sortTable(sortArgument(clasifyLevels, "friends", "asc"), "Amigos");
+    makeSortedTable(sortLevelsForArgument(clasifyLevels, "friends", "asc"), "Amigos");
   });
   
   /*document.getElementById("oc_skills").addEventListener("click", () => {
